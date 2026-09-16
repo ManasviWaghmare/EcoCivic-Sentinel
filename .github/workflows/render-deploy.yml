@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: JorgeLNJunior/render-deploy@v1.5.0
         with:
-          service_id: ${{ secrets.srv-dal85hv40ujc739saahg }}
+          service_id: ${{ secrets.RENDER_SERVICE_ID }}
           api_key: ${{ secrets.rnd_oJNJbPNsa3jCbzFrpYk2xOCDyv7s }}
           wait_deploy: true
           github_deployment: true
