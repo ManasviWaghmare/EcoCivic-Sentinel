@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: civic-report
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/civic_report
+
+jwt:
+  # Dev-only secret - override via env var JWT_SECRET in production
+  secret: civic-report-dev-secret-key-change-me-0123456789abcdef
+  expiration-ms: 86400000 # 24h
+
+cors:
+  allowed-origins: http://localhost:5173

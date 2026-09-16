@@ -1,0 +1,15 @@
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/CivicReportApplication.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/config/DataSeeder.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/config/SecurityConfig.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/controller/AuthController.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/controller/ReportController.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/dto/AuthDtos.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/dto/ReportDtos.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/model/Report.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/model/User.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/repository/ReportRepository.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/repository/UserRepository.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/security/JwtAuthFilter.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/security/JwtService.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/service/AuthService.java
+/home/manasvi/Downloads/civic-report/backend/src/main/java/com/civicreport/service/ReportService.java
