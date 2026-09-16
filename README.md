@@ -175,5 +175,5 @@ private String photoUrl; // Already exists ✅
 ✅ Leaflet map (HomePage.tsx)
 ✅ Cloudinary URL field (just uncomment!)
 ✅ Full CRUD API (ReportController.java)
-```
+
 
