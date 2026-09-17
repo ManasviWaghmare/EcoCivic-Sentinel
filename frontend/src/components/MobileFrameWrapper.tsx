@@ -1,11 +1,20 @@
 import React from 'react';
 import { Signal, Wifi, Battery, Home, Users, Store, Compass } from 'lucide-react';
 
+// ✅ FIXED: Added activeTab, setActiveTab, onOpenReportModal to props
 interface MobileFrameWrapperProps {
   children: React.ReactNode;
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+  onOpenReportModal: () => void;
 }
 
-export const MobileFrameWrapper: React.FC<MobileFrameWrapperProps> = ({ children }) => {
+export const MobileFrameWrapper: React.FC<MobileFrameWrapperProps> = ({
+  children,
+  activeTab,
+  setActiveTab,
+  onOpenReportModal,
+}) => {
   return (
     <div className="mobile-simulator-wrapper">
       <div className="phone-container">
@@ -25,23 +34,35 @@ export const MobileFrameWrapper: React.FC<MobileFrameWrapperProps> = ({ children
           {children}
         </div>
 
-        {/* Bottom Phone Navigation */}
+        {/* ✅ FIXED: Bottom nav now uses activeTab to highlight active tab */}
         <div className="phone-bottom-nav">
-          <button className="phone-nav-btn active">
+          <button
+            className={`phone-nav-btn ${activeTab === 'launchpad' ? 'active' : ''}`}
+            onClick={() => setActiveTab('launchpad')}
+          >
             <Home size={18} />
-            <span>Homepage</span>
+            <span>Home</span>
           </button>
-          <button className="phone-nav-btn">
-            <Users size={18} />
-            <span>Manager</span>
-          </button>
-          <button className="phone-nav-btn">
-            <Store size={18} />
-            <span>Store Ops</span>
-          </button>
-          <button className="phone-nav-btn">
+          <button
+            className={`phone-nav-btn ${activeTab === 'world_map' ? 'active' : ''}`}
+            onClick={() => setActiveTab('world_map')}
+          >
             <Compass size={18} />
-            <span>Shop Ops</span>
+            <span>Map</span>
+          </button>
+          <button
+            className={`phone-nav-btn ${activeTab === 'profile' ? 'active' : ''}`}
+            onClick={() => setActiveTab('profile')}
+          >
+            <Users size={18} />
+            <span>Profile</span>
+          </button>
+          <button
+            className="phone-nav-btn"
+            onClick={onOpenReportModal}
+          >
+            <Store size={18} />
+            <span>Report</span>
           </button>
         </div>
       </div>

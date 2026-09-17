@@ -170,7 +170,7 @@ export function App() {
         onLogout={() => setCurrentUser(null)}
       />
 
-      {/* ✅ FIXED: Emergency Alert Banner wraps properly on mobile */}
+      {/* ✅ FIXED: Emergency Alert Banner wraps on mobile */}
       <div style={{
         background: '#fef2f2',
         borderBottom: '1px solid #fecaca',
@@ -209,7 +209,7 @@ export function App() {
         </button>
       </div>
 
-      {/* ✅ FIXED: overflowX hidden prevents horizontal side-scroll on mobile */}
+      {/* ✅ FIXED: overflowX hidden stops horizontal side-scroll on mobile */}
       <main className="main-content" style={{ overflowX: 'hidden' }}>
         {isMobileSimulator ? (
           <MobileFrameWrapper
