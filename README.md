@@ -161,19 +161,5 @@ private String photoUrl; // Already exists ✅
 └─────────────────┴───────────────────────────────┘
 ```
 
----
-
-## ✅ What's Already Done in Your Code
-
-```
-✅ JWT Auth (JwtService.java + JwtAuthFilter.java)
-✅ MongoDB GeoJsonPoint (Report.java)
-✅ Nearby reports ($near query in ReportRepository.java)
-✅ Role-based access (CITIZEN / AUTHORITY)
-✅ Authority seeding (DataSeeder.java)
-✅ Vite proxy config (no CORS in dev)
-✅ Leaflet map (HomePage.tsx)
-✅ Cloudinary URL field (just uncomment!)
-✅ Full CRUD API (ReportController.java)
 
 
