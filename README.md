@@ -1,165 +1,222 @@
-I've read your full project document! Here's the **complete tech stack tailored exactly to your actual codebase**:
+# 🌿 EcoCivic Sentinel
+
+**A gamified civic reporting platform to report, track & resolve environmental issues in real-time.**
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://eco-civic-sentinel-4fy3yvk2e-manasvi15.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/ManasviWaghmare/EcoCivic-Sentinel)
+[![Built with](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
+[![Backend](https://img.shields.io/badge/Spring%20Boot-3.3-6DB33F?style=for-the-badge&logo=springboot)](https://spring.io)
 
 ---
 
-## 🛠️ Complete Tech Stack — Civic Report / EcoCivic Sentinel
+## 🌐 Live Demo
 
-### Based on your [`Detailed Structure and architecture.docx`](13247#:~:text=Here's%20the%20complete,Civic%20Report%20project.)
+**Frontend:** [https://eco-civic-sentinel-4fy3yvk2e-manasvi15.vercel.app](https://eco-civic-sentinel-4fy3yvk2e-manasvi15.vercel.app)
 
----
-
-## 🖥️ Frontend
-
-| Technology | Purpose | Version |
-|---|---|---|
-| **HTML + CSS + JS** | Base structure | — |
-| **Tailwind CSS** | Styling & responsive design | 3.x |
-| **TypeScript** | Type safety (already in your `tsconfig.json`) | 5.x |
-| **React 18** | UI Framework (already in your `package.json`) | 18.x |
-| **Vite 5** | Build tool & dev server | 5.x |
-| **Leaflet.js** | Interactive map | 1.9.x |
-| **react-leaflet** | React wrapper for Leaflet | 4.x |
-| **react-router-dom** | Page routing | 6.x |
+**GitHub Repository:** [https://github.com/ManasviWaghmare/EcoCivic-Sentinel](https://github.com/ManasviWaghmare/EcoCivic-Sentinel)
 
 ---
 
-## ☕ Backend
+## 📖 Overview
 
-| Technology | Purpose | Version |
-|---|---|---|
-| **Java** | Programming language | **21** (from your `pom.xml`) |
-| **Spring Boot** | Backend framework | **3.3.4** (from your `pom.xml`) |
-| **Spring Security** | Security layer | 3.x |
-| **JWT (jjwt)** | Token authentication | **0.12.6** (from your `pom.xml`) |
-| **Lombok** | Boilerplate reduction | 1.18.x |
-| **Maven** | Build tool | 3.9 |
+EcoCivic Sentinel empowers citizens and local authorities to collaboratively monitor and improve environmental health and fire safety. Citizens can report hazards (fires, floods, pollution, illegal dumping), earn XP/rewards, and track community impact. Authorities can review submissions, update status, dispatch responders, and monitor city-wide KPIs.
+
+The platform features real-time emergency alerts, carbon offset tracking, DEI & equity metrics, interactive maps, and a full incident management log.
 
 ---
 
-## 🗄️ Database
+## ✨ Key Features
 
-| Technology | Purpose | Detail |
-|---|---|---|
-| **MongoDB Atlas** | Primary database | Free M0 cluster |
-| **GeoJsonPoint** | Geo-location storage | Already in your `Report.java` ✅ |
-| **$near queries** | Nearby reports | Already in `ReportRepository.java` ✅ |
+### 🔐 Authentication & Roles
+- Secure JWT-based login
+- Two roles: **CITIZEN** and **AUTHORITY**
+- Quick demo access buttons + email/password sign-in
+- Public registration creates Citizen accounts
 
----
+### 🚨 Active Emergency Alerts
+- Persistent alert banner for live incidents (e.g. Wildfire Watch & Air Quality Advisory)
+- Shows affected ward, active responders, and one-click dispatch
 
-## 📸 Image Storage — Recommendation
+### 📊 Sustainability Dashboard
+- **Sustaina Impact Score** – Monthly engagement & eco-actions chart
+- **Trees Planted & CO₂ Offset** – Live community total
+- **Carbon Offsets & Emergency Frequency** – Trend visualization
+- **Carbon Offset Target** – City milestone progress
 
-### 🏆 **Cloudinary** (Already Referenced in Your Code!)
+### ⚖️ City DEI & Equity Score
+- Gender Equity, Race Equity, Resource Access, Inclusion Index
+- Radial progress visualization
 
-```
-Your document says:
-"Photo upload left as URL field +
- commented Cloudinary example (easy to enable)" ✅
-```
+### 👥 Ward Participation
+- Gender-based headcount breakdown per ward
 
-**Just uncomment it! Here's the complete setup:**
+### 🎯 Sustainability & Fire Readiness KPIs
+- Reduce non-renewable energy dependence
+- GHG emission reduction goals
+- Fire hydrant readiness & flood defense progress
 
-```javascript
-// frontend/src/pages/ReportPage.tsx
-// Replace photo URL field with this:
+### ✅ Action Items & Preparedness Pledges
+- Volunteer pledges with due dates and progress tracking
 
-const uploadImage = async (file) => {
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", "civic_report_preset"); // unsigned
+### 📋 Environmental & Emergency Incident Log
+Searchable table of citizen reports with:
 
-  const res = await fetch(
-    `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_NAME}/image/upload`,
-    { method: "POST", body: formData }
-  );
-  const data = await res.json();
-  return data.secure_url; // Save this URL to MongoDB
-};
-```
+| Field | Description |
+|-------|-------------|
+| Reporter | Citizen who submitted |
+| Category | FIRE, FLOOD, DUMPING, POLLUTION, ECO, etc. |
+| Description | Incident details |
+| Location | Ward / specific place |
+| Urgency | CRITICAL / HIGH / MEDIUM / LOW |
+| Impact / Offset | Estimated CO₂ impact |
+| Status | IN_PROGRESS / IN_REVIEW / SUBMITTED / RESOLVED |
 
-```java
-// backend — Report.java already has photo URL field
-// Just store the Cloudinary URL string — no backend changes needed!
-private String photoUrl; // Already exists ✅
-```
-
-**Setup (5 min):**
-```
-1. cloudinary.com → Free account
-2. Settings → Upload Presets
-3. Create preset: civic_report_preset
-4. Mode: Unsigned ✅
-5. Add to frontend .env:
-   VITE_CLOUDINARY_NAME=your_cloud_name
-```
+### 🗺️ Interactive Map (Leaflet)
+- World Map view with OpenStreetMap tiles
+- Geo-location support for nearby reports
 
 ---
 
-## 🗺️ Maps / Geo
+## 🛠️ Tech Stack
 
-| Technology | Purpose | Cost |
-|---|---|---|
-| **Leaflet.js** | Map rendering | Free |
-| **OpenStreetMap** | Map tiles | Free, no API key |
-| **MongoDB GeoJsonPoint** | Location storage | Already set up ✅ |
-| **Browser Geolocation API** | GPS picker | Free, built-in |
+### Frontend
+| Technology | Purpose |
+|------------|---------|
+| React 18 + TypeScript | UI Framework |
+| Vite 5 | Build tool & dev server |
+| Tailwind CSS | Styling & responsive design |
+| Leaflet.js + react-leaflet | Interactive maps |
+| react-router-dom | Client-side routing |
+
+### Backend
+| Technology | Purpose |
+|------------|---------|
+| Java 21 | Programming language |
+| Spring Boot 3.3.4 | Backend framework |
+| Spring Security + JWT | Authentication & authorization |
+| Lombok | Boilerplate reduction |
+| Maven | Build tool |
+
+### Database & Storage
+| Technology | Purpose |
+|------------|---------|
+| MongoDB Atlas | Primary database (GeoJSON support) |
+| Cloudinary | Image storage (optional / planned) |
+
+### Hosting
+| Layer | Platform |
+|-------|----------|
+| Frontend | Vercel |
+| Backend | Render (Docker) |
+| Database | MongoDB Atlas |
 
 ---
 
-## 🔐 Auth
+## 🚀 Getting Started
 
-| Technology | Purpose | Detail |
-|---|---|---|
-| **JWT Bearer Token** | Auth method | Already in `JwtService.java` ✅ |
-| **Spring Security** | Filter chain | Already in `SecurityConfig.java` ✅ |
-| **BCrypt** | Password hashing | Already in `AuthService.java` ✅ |
-| **Roles** | CITIZEN / AUTHORITY | Already seeded via `DataSeeder.java` ✅ |
+### Prerequisites
+- **Node.js** 18+
+- **Java 21+**
+- **Maven 3.9+**
+- MongoDB (local or Atlas URI)
 
----
-
-## 🚀 Hosting
-
-| Layer | Platform | Cost | Why |
-|---|---|---|---|
-| **Frontend** | **Vercel** | Free | Auto-deploy from GitHub, Vite optimized |
-| **Backend** | **Render (Docker)** | Free | Java 21 via Dockerfile |
-| **Database** | **MongoDB Atlas** | Free M0 | Already cloud-hosted |
-| **Images** | **Cloudinary CDN** | Free 25GB | Already referenced in code |
-| **Uptime** | **UptimeRobot** | Free | Keeps Render awake |
-
----
-
-## 📋 Full Stack Summary
-
-```
-┌─────────────────────────────────────────────────┐
-│           CIVIC REPORT — FULL TECH STACK        │
-├─────────────────┬───────────────────────────────┤
-│ HTML/CSS/JS     │ Base Frontend                 │
-│ Tailwind CSS    │ Styling                       │
-│ React 18 + TS   │ UI Framework                  │
-│ Vite 5          │ Build Tool                    │
-│ Leaflet.js      │ Maps                          │
-│ OpenStreetMap   │ Free Map Tiles                │
-├─────────────────┼───────────────────────────────┤
-│ Java 21         │ Backend Language              │
-│ Spring Boot 3.3.4│ Backend Framework            │
-│ JWT 0.12.6      │ Authentication                │
-│ Spring Security │ Authorization                 │
-│ Lombok          │ Code Generation               │
-│ Maven 3.9       │ Build Tool                    │
-├─────────────────┼───────────────────────────────┤
-│ MongoDB Atlas   │ Database (Free M0)            │
-│ GeoJsonPoint    │ Geo Storage                   │
-├─────────────────┼───────────────────────────────┤
-│ Cloudinary ⭐   │ Image Storage (Free 25GB)     │
-├─────────────────┼───────────────────────────────┤
-│ Docker          │ Backend Container             │
-│ Vercel          │ Frontend Hosting              │
-│ Render          │ Backend Hosting               │
-│ UptimeRobot     │ Keep Render Awake             │
-│ GitHub          │ Version Control               │
-└─────────────────┴───────────────────────────────┘
+### 1. Clone the Repository
+```bash
+git clone https://github.com/ManasviWaghmare/EcoCivic-Sentinel.git
+cd EcoCivic-Sentinel
 ```
 
+### 2. Backend Setup
+```bash
+cd backend
+./mvnw spring-boot:run
+# or: mvn spring-boot:run
+```
+Backend starts at **http://localhost:8080**
 
+### 3. Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Frontend starts at **http://localhost:5173**
 
+---
+
+## 🔑 Demo Credentials
+
+| Role       | Email                | Password     |
+|------------|----------------------|--------------|
+| Authority  | authority@city.gov   | authority123 |
+| Citizen    | Register a new account or use the Quick Demo buttons | – |
+
+---
+
+## 📡 API Overview
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/api/auth/register` | Public | Register (role = CITIZEN) |
+| POST | `/api/auth/login` | Public | Login, returns JWT |
+| GET | `/api/reports` | Public | List reports (`?status=&category=`) |
+| GET | `/api/reports/{id}` | Public | Get one report |
+| GET | `/api/reports/nearby` | Public | Geo search (`?lat=&lng=&distanceKm=`) |
+| POST | `/api/reports` | Any user | Create report (JWT required) |
+| GET | `/api/reports/my` | Any user | Current user's reports |
+| POST | `/api/reports/{id}/upvote` | Any user | Toggle upvote |
+| PATCH | `/api/reports/{id}/status` | AUTHORITY only | Update status + note |
+
+Use header: `Authorization: Bearer <jwt>`
+
+---
+
+## 📁 Project Structure
+
+```
+EcoCivic-Sentinel/
+├── backend/                 # Spring Boot API
+│   ├── src/main/java/...
+│   ├── Dockerfile
+│   └── pom.xml
+├── frontend/                # React + Vite app
+│   ├── src/
+│   ├── package.json
+│   └── vite.config.ts
+├── .github/workflows/       # CI/CD
+└── README.md
+```
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Full real-time map with live hazard markers
+- [ ] Push / email notifications for emergency alerts
+- [ ] Mobile-responsive citizen reporting flow
+- [ ] Expanded XP & Rewards system
+- [ ] Cloudinary image upload integration
+- [ ] Multi-language support
+- [ ] Weather & air quality API integration
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is open source. See the repository for license details.
+
+---
+
+**EcoCivic Sentinel** — Empowering communities to protect their environment and stay fire-safe, together.
+
+Built by [Manasvi Waghmare,Abhishek Kute ,Chaitanya Retawade,Anand Singh](https://github.com/ManasviWaghmare)
