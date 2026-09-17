@@ -197,11 +197,106 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.8rem;
 }
 
-/* Glass & Card Containers */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.25rem;
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES — Mobile First
+   ============================================================ */
+
+/* --- Small phones (< 480px) --- */
+@media (max-width: 480px) {
+  .main-content {
+    padding: 1rem 0.75rem 3rem;
+  }
+
+  /* Stack all grid cards to single column */
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Header: shrink brand text & hide nav labels */
+  .header-brand {
+    font-size: 1rem;
+  }
+
+  .header-brand-tag {
+    display: none;
+  }
+
+  .nav-tab-btn {
+    font-size: 0.75rem;
+    padding: 0 0.5rem;
+    gap: 0.2rem;
+  }
+
+  .xp-badge,
+  .user-profile-pill span {
+    display: none;
+  }
+
+  /* Cards */
+  .dash-card {
+    padding: 1rem;
+  }
+
+  .dash-card-title {
+    font-size: 0.9rem;
+  }
+
+  .tree-counter-number {
+    font-size: 1.75rem;
+  }
+
+  .cloud-visual-box {
+    width: 140px;
+    height: 85px;
+  }
+
+  .cloud-overlay-text {
+    font-size: 1.2rem;
+  }
+
+  /* Tables: allow horizontal scroll */
+  .custom-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* --- Tablets & large phones (481px – 768px) --- */
+@media (min-width: 481px) and (max-width: 768px) {
+  .main-content {
+    padding: 1rem 1rem 3rem;
+  }
+
+  /* 2-column grid on tablet */
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .header-brand {
+    font-size: 1.1rem;
+  }
+
+  .nav-tab-btn {
+    font-size: 0.8rem;
+    padding: 0 0.65rem;
+  }
+}
+
+/* --- Small desktops (769px – 1024px) --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.1rem;
+  }
+}
+
+/* --- Full desktop (1025px+) --- */
+@media (min-width: 1025px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
 }
 
 .dash-card {
