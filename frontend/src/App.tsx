@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
-import { SustairaDashboard } from './components/SustairaDashboard';
+import { LaunchpadDashboard } from './components/LaunchpadDashboard';
+import { HazardsFiresPage } from './components/HazardsFiresPage';
+import { ActionsPage } from './components/ActionsPage';
+import { RewardsPage } from './components/RewardsPage';
 import { MobileAnalyticsDashboard } from './components/MobileAnalyticsDashboard';
 import { MobileFrameWrapper } from './components/MobileFrameWrapper';
 import { NewReportModal } from './components/NewReportModal';
@@ -27,7 +30,7 @@ export function App() {
       title: 'Wildfire outbreak warning near Pine Ridge forest trail',
       location: 'Ward 2 North Hills | Miles: 55',
       urgency: 'CRITICAL' as const,
-      impactMetric: '104.58 kg CO₂',
+      impactMetric: '104.58 kg CO\u2082',
       costOrImpact: '$0.18',
       status: 'IN_PROGRESS',
       date: '09/16/2026'
@@ -39,7 +42,7 @@ export function App() {
       title: 'Storm drain blockage & urban street flooding',
       location: 'Logan International Airport to Los Angeles',
       urgency: 'HIGH' as const,
-      impactMetric: '809.69 kg CO₂',
+      impactMetric: '809.69 kg CO\u2082',
       costOrImpact: '$12.11',
       status: 'IN_REVIEW',
       date: '09/15/2026'
@@ -51,7 +54,7 @@ export function App() {
       title: 'Hotel electrical fire hazard & hydrant inspection needed',
       location: 'Hotel (2 Night(s))',
       urgency: 'HIGH' as const,
-      impactMetric: '27.20 kg CO₂',
+      impactMetric: '27.20 kg CO\u2082',
       costOrImpact: '$0.42',
       status: 'IN_PROGRESS',
       date: '09/14/2026'
@@ -63,7 +66,7 @@ export function App() {
       title: 'Illegal hazardous waste dumping along riverbank',
       location: 'Gwadar International Airport To Frankfurt Main',
       urgency: 'MEDIUM' as const,
-      impactMetric: '1028.83 kg CO₂',
+      impactMetric: '1028.83 kg CO\u2082',
       costOrImpact: '$15.39',
       status: 'SUBMITTED',
       date: '09/12/2026'
@@ -75,7 +78,7 @@ export function App() {
       title: 'Industrial smog plume & particulate air pollution',
       location: 'Logan International Airport to Amsterdam Schiphol',
       urgency: 'HIGH' as const,
-      impactMetric: '107.21 kg CO₂',
+      impactMetric: '107.21 kg CO\u2082',
       costOrImpact: '$14.17',
       status: 'IN_REVIEW',
       date: '09/10/2026'
@@ -87,7 +90,7 @@ export function App() {
       title: 'Community mangrove planting & flood defense barrier',
       location: 'Flight | BOS -> DEN',
       urgency: 'LOW' as const,
-      impactMetric: '664.46 kg CO₂',
+      impactMetric: '664.46 kg CO\u2082',
       costOrImpact: '$11.46',
       status: 'RESOLVED',
       date: '09/08/2026'
@@ -99,7 +102,7 @@ export function App() {
       title: 'Solar panel microgrid rebate installation in Ward 1',
       location: 'Flight | DEN -> LHR',
       urgency: 'LOW' as const,
-      impactMetric: '2895.18 kg CO₂',
+      impactMetric: '2895.18 kg CO\u2082',
       costOrImpact: '$26.32',
       status: 'RESOLVED',
       date: '09/05/2026'
@@ -175,11 +178,21 @@ export function App() {
               />
             ) : activeTab === 'ward_ops' ? (
               <WardAnalytics />
-            ) : (
-              <SustairaDashboard
+            ) : activeTab === 'reports' ? (
+              <HazardsFiresPage
                 reports={reports}
                 onOpenReportModal={() => setIsReportModalOpen(true)}
               />
+            ) : activeTab === 'actions' ? (
+              <ActionsPage onOpenReportModal={() => setIsReportModalOpen(true)} />
+            ) : activeTab === 'rewards' ? (
+              <RewardsPage
+                reports={reports}
+                currentUserName={currentUser.name}
+                currentXp={25}
+              />
+            ) : (
+              <LaunchpadDashboard />
             )}
           </>
         )}
