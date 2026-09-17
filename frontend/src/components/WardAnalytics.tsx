@@ -1,9 +1,6 @@
-**
+/**
  * WardAnalytics.tsx
  * Proper multi-ward analysis for EcoCivic Sentinel.
- *
- * Drop this into: frontend/src/components/WardAnalytics.tsx
- * Then import and render it inside SustairaDashboard (or on the Ward Analytics route).
  */
 
 import React, { useState, useMemo } from 'react';
@@ -21,7 +18,6 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
   Radar,
-  Cell,
 } from 'recharts';
 import {
   MapPin,
@@ -36,9 +32,6 @@ import {
   Activity,
 } from 'lucide-react';
 
-/* ─────────────────────────────────────────────
-   Mock ward dataset (replace with API later)
-───────────────────────────────────────────── */
 export interface WardStats {
   id: string;
   name: string;
@@ -50,17 +43,17 @@ export interface WardStats {
   low: number;
   resolved: number;
   inProgress: number;
-  resolutionRate: number; // %
+  resolutionRate: number;
   activeCitizens: number;
   male: number;
   female: number;
   other: number;
   treesPlanted: number;
   co2OffsetKg: number;
-  fireReadiness: number; // %
-  floodDefense: number; // %
-  participationScore: number; // 0–100
-  equityIndex: number; // 0–100
+  fireReadiness: number;
+  floodDefense: number;
+  participationScore: number;
+  equityIndex: number;
   topHazard: string;
 }
 
@@ -194,9 +187,6 @@ const URGENCY_COLORS = {
   low: '#22c55e',
 };
 
-/* ─────────────────────────────────────────────
-   Component
-───────────────────────────────────────────── */
 export const WardAnalytics: React.FC = () => {
   const [selectedWardId, setSelectedWardId] = useState<string>('w2');
   const selected = useMemo(
@@ -204,16 +194,13 @@ export const WardAnalytics: React.FC = () => {
     [selectedWardId]
   );
 
-  // Comparison chart data
   const comparisonData = WARD_DATA.map((w) => ({
     name: w.name.replace('Ward ', 'W'),
     Reports: w.totalReports,
     Resolved: w.resolved,
-    Citizens: Math.round(w.activeCitizens / 5), // scale for chart readability
     'Fire Ready %': w.fireReadiness,
   }));
 
-  // Radar data for selected ward
   const radarData = [
     { metric: 'Resolution', value: selected.resolutionRate },
     { metric: 'Fire Ready', value: selected.fireReadiness },
@@ -222,10 +209,8 @@ export const WardAnalytics: React.FC = () => {
     { metric: 'Equity', value: selected.equityIndex },
   ];
 
-  // Ranking by resolution rate
   const ranked = [...WARD_DATA].sort((a, b) => b.resolutionRate - a.resolutionRate);
 
-  // City totals
   const cityTotals = useMemo(() => {
     return WARD_DATA.reduce(
       (acc, w) => ({
@@ -242,7 +227,7 @@ export const WardAnalytics: React.FC = () => {
 
   return (
     <div className="dashboard-grid" style={{ marginTop: '1rem' }}>
-      {/* ── Header strip ── */}
+      {/* Header strip */}
       <div className="dash-card" style={{ gridColumn: 'span 12', padding: '1rem 1.25rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
           <div>
@@ -276,7 +261,7 @@ export const WardAnalytics: React.FC = () => {
         </div>
       </div>
 
-      {/* ── City overview KPIs ── */}
+      {/* City overview KPIs */}
       <div className="dash-card" style={{ gridColumn: 'span 2' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
           <Activity size={16} color="#38bdf8" />
@@ -322,7 +307,7 @@ export const WardAnalytics: React.FC = () => {
         <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>city-wide average</div>
       </div>
 
-      {/* ── Selected ward detail card ── */}
+      {/* Selected ward detail */}
       <div className="dash-card" style={{ gridColumn: 'span 5' }}>
         <div className="dash-card-header">
           <div>
@@ -347,7 +332,6 @@ export const WardAnalytics: React.FC = () => {
           <Metric label="CO₂ Offset" value={`${selected.co2OffsetKg} kg`} accent="#22c55e" />
         </div>
 
-        {/* Gender participation for this ward */}
         <div style={{ marginTop: 16 }}>
           <div className="dash-card-subtitle" style={{ marginBottom: 8 }}>Participation by Gender</div>
           <div style={{ display: 'flex', gap: 8 }}>
@@ -357,7 +341,6 @@ export const WardAnalytics: React.FC = () => {
           </div>
         </div>
 
-        {/* Urgency breakdown bars */}
         <div style={{ marginTop: 16 }}>
           <div className="dash-card-subtitle" style={{ marginBottom: 8 }}>Urgency Breakdown</div>
           <UrgencyBar label="Critical" count={selected.critical} total={selected.totalReports} color={URGENCY_COLORS.critical} />
@@ -367,7 +350,7 @@ export const WardAnalytics: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Radar performance ── */}
+      {/* Radar */}
       <div className="dash-card" style={{ gridColumn: 'span 3' }}>
         <div className="dash-card-header">
           <div className="dash-card-title">Performance Radar</div>
@@ -392,7 +375,7 @@ export const WardAnalytics: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Ward ranking ── */}
+      {/* Ranking */}
       <div className="dash-card" style={{ gridColumn: 'span 4' }}>
         <div className="dash-card-header">
           <div>
@@ -449,7 +432,7 @@ export const WardAnalytics: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Comparison bar chart ── */}
+      {/* Comparison chart */}
       <div className="dash-card" style={{ gridColumn: 'span 7' }}>
         <div className="dash-card-header">
           <div>
@@ -476,7 +459,7 @@ export const WardAnalytics: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Hazard type by ward ── */}
+      {/* Top hazard */}
       <div className="dash-card" style={{ gridColumn: 'span 5' }}>
         <div className="dash-card-header">
           <div>
@@ -522,7 +505,7 @@ export const WardAnalytics: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Full comparison table ── */}
+      {/* Full table */}
       <div className="dash-card" style={{ gridColumn: 'span 12' }}>
         <div className="dash-card-header">
           <div>
@@ -599,7 +582,6 @@ export const WardAnalytics: React.FC = () => {
   );
 };
 
-/* ── Small helpers ── */
 function Metric({ label, value, accent }: { label: string; value: string | number; accent?: string }) {
   return (
     <div style={{ padding: '0.5rem 0.65rem', borderRadius: 8, background: 'rgba(30, 41, 59, 0.5)' }}>

@@ -7,6 +7,7 @@ import { NewReportModal } from './components/NewReportModal';
 import { AuthPage } from './components/AuthPage';
 import { WorldMapView } from './components/WorldMapView';
 import { ResourcesModal } from './components/ResourcesModal';
+import { WardAnalytics } from './components/WardAnalytics';
 import { ShieldAlert } from 'lucide-react';
 
 export function App() {
@@ -18,7 +19,6 @@ export function App() {
   const [isResourcesModalOpen, setIsResourcesModalOpen] = useState(false);
   const [pickedLocation, setPickedLocation] = useState<string>('');
 
-  // Initial Seed Reports
   const [reports, setReports] = useState([
     {
       id: '1',
@@ -118,7 +118,6 @@ export function App() {
     setPickedLocation(`Picked GeoCoords (${lat.toFixed(4)}, ${lng.toFixed(4)})`);
   };
 
-  // If user is not logged in, show AuthPage first!
   if (!currentUser) {
     return (
       <AuthPage
@@ -132,7 +131,6 @@ export function App() {
 
   return (
     <div className="app-container">
-      {/* Sustaira Header Bar */}
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -146,15 +144,14 @@ export function App() {
         onLogout={() => setCurrentUser(null)}
       />
 
-      {/* Hero Banner / Emergency Alert Notification */}
       <div style={{ background: '#fef2f2', borderBottom: '1px solid #fecaca', padding: '0.6rem 1.5rem', color: '#991b1b', fontSize: '0.85rem', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <ShieldAlert size={16} className="text-red-600 animate-pulse" />
           <span>Active Emergency Alert: Wildfire Watch & Air Quality Advisory in Ward 2 (North Hills). 15 Active Responders Dispatched.</span>
         </div>
         <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button 
-            className="btn-sustaira" 
+          <button
+            className="btn-sustaira"
             style={{ padding: '0.2rem 0.6rem', fontSize: '0.75rem', background: '#dc2626' }}
             onClick={() => setIsReportModalOpen(true)}
           >
@@ -164,7 +161,6 @@ export function App() {
       </div>
 
       <main className="main-content">
-        {/* Render Mobile Simulator Viewport OR Desktop Views */}
         {isMobileSimulator ? (
           <MobileFrameWrapper>
             <MobileAnalyticsDashboard />
@@ -178,7 +174,7 @@ export function App() {
                 onOpenReportModal={() => setIsReportModalOpen(true)}
               />
             ) : activeTab === 'ward_ops' ? (
-              <MobileAnalyticsDashboard />
+              <WardAnalytics />
             ) : (
               <SustairaDashboard
                 reports={reports}
@@ -189,7 +185,6 @@ export function App() {
         )}
       </main>
 
-      {/* New Report Modal */}
       <NewReportModal
         isOpen={isReportModalOpen}
         onClose={() => setIsReportModalOpen(false)}
@@ -197,7 +192,6 @@ export function App() {
         initialLocation={pickedLocation}
       />
 
-      {/* Resources & Documentation Modal */}
       <ResourcesModal
         isOpen={isResourcesModalOpen}
         onClose={() => setIsResourcesModalOpen(false)}
