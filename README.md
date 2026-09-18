@@ -1,4 +1,4 @@
-# 🌿 EcoCivic Sentinel
+# 🌿 EcoCivic Sentinel.
 
 **A gamified civic reporting platform to report, track & resolve environmental issues in real-time.**
 
@@ -7,7 +7,8 @@
 [![Built with](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
 [![Backend](https://img.shields.io/badge/Spring%20Boot-3.3-6DB33F?style=for-the-badge&logo=springboot)](https://spring.io)
 
----
+
+___
 
 ## 🌐 Live Demo
 
@@ -15,7 +16,8 @@
 
 **GitHub Repository:** [https://github.com/ManasviWaghmare/EcoCivic-Sentinel](https://github.com/ManasviWaghmare/EcoCivic-Sentinel)
 
----
+
+___
 
 ## 📖 Overview
 
@@ -23,7 +25,8 @@ EcoCivic Sentinel empowers citizens and local authorities to collaboratively mon
 
 The platform features real-time emergency alerts, carbon offset tracking, DEI & equity metrics, interactive maps, and a full incident management log.
 
----
+
+___
 
 ## ✨ Key Features
 
@@ -75,7 +78,8 @@ Searchable table of citizen reports with:
 - World Map view with OpenStreetMap tiles
 - Geo-location support for nearby reports
 
----
+
+___
 
 ## 🛠️ Tech Stack
 
@@ -110,7 +114,8 @@ Searchable table of citizen reports with:
 | Backend | Render (Docker) |
 | Database | MongoDB Atlas |
 
----
+
+___
 
 ## 🚀 Getting Started
 
@@ -142,7 +147,8 @@ npm run dev
 ```
 Frontend starts at **http://localhost:5173**
 
----
+
+___
 
 ## 🔑 Demo Credentials
 
@@ -151,7 +157,8 @@ Frontend starts at **http://localhost:5173**
 | Authority  | authority@city.gov   | authority123 |
 | Citizen    | Register a new account or use the Quick Demo buttons | – |
 
----
+
+___
 
 ## 📡 API Overview
 
@@ -169,7 +176,8 @@ Frontend starts at **http://localhost:5173**
 
 Use header: `Authorization: Bearer <jwt>`
 
----
+
+___
 
 ## 📁 Project Structure
 
@@ -187,7 +195,8 @@ EcoCivic-Sentinel/
 └── README.md
 ```
 
----
+
+___
 
 ## 🗺️ Roadmap
 
@@ -199,7 +208,8 @@ EcoCivic-Sentinel/
 - [ ] Multi-language support
 - [ ] Weather & air quality API integration
 
----
+
+___
 
 ## 🤝 Contributing
 
@@ -209,13 +219,15 @@ EcoCivic-Sentinel/
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
----
+
+___
 
 ## 📄 License
 
 This project is open source. See the repository for license details.
 
----
+
+___
 
 **EcoCivic Sentinel** — Empowering communities to protect their environment and stay fire-safe, together.
 
